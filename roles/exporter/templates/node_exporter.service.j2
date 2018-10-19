@@ -1,0 +1,11 @@
+[Unit]
+Description=Prometheus Node Exporter
+After=network.target
+
+[Service]
+Type=simple
+
+
+User={{ exporter_user }}
+Group={{ exporter_group }}
+ExecStart={{ exporter_daemon_dir }}/node_exporter
