@@ -11,12 +11,10 @@
 - name: set download url for versions
   set_fact:
     exporter_tarball_url: "https://github.com/prometheus/node_exporter/releases/download/v{{ exporter_version }}/node_exporter-{{ exporter_version }}.linux-amd64.tar.gz"
-  when: exporter_version
 
 - name: set daemon dir for versions
   set_fact:
     exporter_daemon_dir: "{{ exporter_subdir }}"
-  when: exporter_version
 
 - name: download and untar exporter tarball
   unarchive:
