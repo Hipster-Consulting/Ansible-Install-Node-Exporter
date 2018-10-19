@@ -3,8 +3,6 @@
 
 - name: Setup Prometheus Node Exporter
   hosts: localhost
-  remote_user: vmadmin
-  become_method: sudo
 
   roles:
     - exporter

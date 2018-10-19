@@ -26,10 +26,8 @@
 
 - name: create node-exporter group
   group: name={{ exporter_group }}  state=present
-  become: true
 
 - name: create node-exporter user
-  become: true
   user:
     name: "{{ exporter_user }}"
     group: "{{ exporter_group }}"
@@ -40,22 +38,17 @@
 
 - name: set permissions, owner and group
   file: path={{ exporter_daemon_dir }}/node_exporter owner={{ node_exporter_user }} group={{ node_exporter_group }} mode="go-w"
-  become: true
 
 - name: set node_exporter variables
   copy: src="../files/etc-default-node_exporter"  dest=/etc/default/node_exporter
   register: exporter_config
-  become: true
 
 - debug: var=exporter_config
   notify: reload node_exporter
   when: exporter_config.changed
-  become: true
 
 - name: copy systemd config to server
   template: src="templates/node_exporter.service.j2"  dest="/lib/systemd/system/node_exporter.service"
-  become: true
 
 - name: set status and start
   service: name=node_exporter enabled=yes state=started
-  become: true
