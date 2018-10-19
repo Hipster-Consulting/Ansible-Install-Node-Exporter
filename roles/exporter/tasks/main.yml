@@ -41,7 +41,7 @@
   become: true
 
 - name: set node_exporter variables
-  copy: src="../files/etc-default-node_exporter"  dest=/etc/default/node_exporter
+  copy: src="files/etc-default-node_exporter"  dest=/etc/default/node_exporter
   register: exporter_config
   become: true
 
