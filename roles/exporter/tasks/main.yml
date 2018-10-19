@@ -37,7 +37,7 @@
     state: present
 
 - name: set permissions, owner and group
-  file: path={{ exporter_daemon_dir }}/node_exporter owner={{ node_exporter_user }} group={{ node_exporter_group }} mode="go-w"
+  file: path={{ exporter_daemon_dir }}/node_exporter owner={{ exporter_user }} group={{ exporter_group }} mode="go-w"
   become: true
 
 - name: set node_exporter variables
